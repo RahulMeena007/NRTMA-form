@@ -197,7 +197,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--slate); lin
 
 .expired-card {
     opacity: 1; /* Match the vibrant look of the screenshot */
-    transform: none !important;
+    transform: none;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     background: #ffffff;
@@ -206,6 +206,13 @@ body { font-family: var(--font); background: var(--bg); color: var(--slate); lin
     position: relative;
     display: flex;
     flex-direction: column;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+.expired-card:hover {
+    filter: grayscale(0%);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
 }
 .expired-card .camp-img-wrap {
     height: 180px;
