@@ -30,21 +30,6 @@ html { scroll-behavior: smooth; }
 body { 
     font-family: var(--font); background: var(--bg); color: var(--slate); line-height: 1.6; 
     -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; 
-    position: relative;
-}
-
-/* ── INDIAN RAILWAY LOGO BACKGROUND PATTERN ── */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background-image: url('logo_1.png');
-    background-size: 300px;
-    background-repeat: repeat;
-    opacity: 0.04;
-    filter: grayscale(100%);
-    z-index: -1;
-    pointer-events: none;
 }
 
 /* ── NAVBAR ─────────────────────────────────── */
@@ -502,4 +487,31 @@ body::before {
     .modal-actions { flex-direction: column; }
     .section-camps { padding: 60px 16px; }
     .section-info { padding: 20px 16px 60px; }
+}
+/* -- SIDE ADS --------------------------------- */
+.ad-banner {
+    position: fixed;
+    top: 120px;
+    width: 160px;
+    height: 600px;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 50;
+}
+.ad-left { left: 15px; }
+.ad-right { right: 15px; }
+
+/* Hide on screens smaller than 1400px so it doesn't overlap the main layout */
+@media (max-width: 1400px) {
+    .ad-banner { display: none; }
 }

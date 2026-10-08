@@ -483,3 +483,29 @@ input.ap-invalid {
     .ap-preview-actions { flex-direction: column; }
     .ap-progress-steps { gap: 0; overflow-x: auto; justify-content: flex-start; padding-bottom: 4px; }
 }
+/* -- SIDE ADS --------------------------------- */
+.ad-banner {
+    position: fixed;
+    top: 120px;
+    width: 160px;
+    height: 600px;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 50;
+}
+.ad-left { left: 15px; }
+.ad-right { right: 15px; }
+
+@media (max-width: 1400px) {
+    .ad-banner { display: none; }
+}
