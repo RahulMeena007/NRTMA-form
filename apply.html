@@ -170,26 +170,27 @@
                         <h2>Required Documents</h2>
                     </div>
                     <div class="ap-form-grid">
-                        <div class="ap-field ap-span-2" style="text-align: center;">
-                            <label class="ap-upload-box" id="uploadBox" style="cursor:pointer; display:block; padding:20px; border: 2px dashed var(--border); border-radius: 8px;">
+                        <div class="ap-field">
+                            <label style="display: block; margin-bottom: 8px; color: #374151; font-weight: 600;">Passport Photo <span class="req">*</span></label>
+                            <label class="ap-upload-box" id="uploadBox" style="cursor:pointer; display:flex; align-items: center; justify-content: center; padding:10px; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; transition: all 0.2s; height: 42px;">
                                 <input type="file" id="photoUpload" accept="image/*" style="display: none;" data-required="true">
-                                <div id="uploadIconText">
-                                    <span style="font-size: 30px;">📷</span>
-                                    <p style="margin-top: 10px; color: var(--blue); font-weight: 600;">Upload Passport Photo</p>
+                                <div id="uploadIconText" style="display: flex; align-items: center; gap: 8px;">
+                                    <span style="font-size: 18px;">📷</span>
+                                    <span style="margin: 0; color: var(--blue); font-weight: 500; font-size: 14px;">Click to Upload</span>
                                 </div>
                             </label>
                         </div>
                         <div class="ap-field">
                             <label>Employee Signature <span class="req">*</span></label>
-                            <input type="file" id="employeeSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
+                            <input type="file" id="employeeSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
                         </div>
                         <div class="ap-field">
                             <label>Applicant Signature <span class="req">*</span></label>
-                            <input type="file" id="applicantSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
+                            <input type="file" id="applicantSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
                         </div>
-                        <div class="ap-field ap-span-2">
+                        <div class="ap-field">
                             <label>Medical Document (Under 2MB) <span class="req">*</span></label>
-                            <input type="file" id="medicalDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
+                            <input type="file" id="medicalDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
                             <span id="err-medicalDocument" class="ap-err"></span>
                         </div>
                     </div>
