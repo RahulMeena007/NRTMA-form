@@ -72,9 +72,38 @@ body { font-family: var(--font); background: var(--bg); color: var(--slate); lin
     .navbar { padding: 0 16px; }
 }
 
+/* ── NOTICE BANNER ──────────────────────────── */
+.notice-banner {
+    background: #eef2ff;
+    border-bottom: 1px solid #c7d2fe;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    color: var(--navy);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-top: 64px; /* accounts for fixed navbar */
+}
+.notice-banner svg {
+    flex-shrink: 0;
+    color: var(--blue);
+}
+.notice-banner strong {
+    color: var(--blue-dark);
+}
+@media (max-width: 768px) {
+    .notice-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+    }
+}
+
 /* ── HERO ───────────────────────────────────── */
 .hero {
-    position: relative; margin-top: 64px;
+    position: relative; margin-top: 0;
     height: calc(100vh - 64px); min-height: 500px;
     background: url('panchmarhi.jpg') center/cover no-repeat fixed;
     display: flex; align-items: center; justify-content: center; text-align: center;
