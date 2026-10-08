@@ -5,6 +5,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
     // Countdown Timers
+    function adjustActiveGrid() {
+        const activeGrid = document.querySelector('.camps-grid');
+        if (!activeGrid) return;
+        const activeCards = activeGrid.querySelectorAll('.camp-card');
+        if (activeCards.length === 1) {
+            activeGrid.classList.add('centered');
+        } else {
+            activeGrid.classList.remove('centered');
+        }
+    }
+
+    function convertToExpired(card) {
+        const expiredGrid = document.querySelector('.expired-camps-grid');
+        if (!expiredGrid) return;
+        
+        // Extract info
+        const img = card.querySelector('img');
+        const imgSrc = img ? img.src : '';
+        const imgAlt = img ? img.alt : '';
+        
+        const campTagEl = card.querySelector('.camp-tag');
+        const campTag = campTagEl ? campTagEl.innerText : 'Camp';
+        
+        const h3El = card.querySelector('h3');
+        const title = h3El ? h3El.innerText : '';
+        
+        const locEl = card.querySelector('.camp-loc');
+        const locHtml = locEl ? locEl.innerHTML : '';
+        
+        // Extract dates and price
+        const metaRows = card.querySelectorAll('.meta-row');
+        let dates = "";
+        let price = "";
+        metaRows.forEach(row => {
+            if(row.innerText.includes('Dates')) {
+                const spans = row.querySelectorAll('span');
+                if (spans.length > 1) dates = spans[1].innerText;
+            }
+            if(row.innerText.includes('Fee')) {
+                const priceEl = row.querySelector('.camp-price');
+                if (priceEl) price = priceEl.innerText;
+            }
+        });
+
+        // Build expired card HTML
+        const expiredHtml = `
+            <div class="camp-img-wrap">
+                <img src="${imgSrc}" alt="${imgAlt}">
+                <div class="expired-tag">EXPIRED</div>
+                <span class="camp-tag tag-theme">${campTag}</span>
+            </div>
+            <div class="camp-body">
+                <p class="camp-loc">${locHtml}</p>
+                <h3>${title}</h3>
+                <div class="camp-meta">
+                    <div class="meta-row"><span class="meta-icon">📅</span><span>${dates}</span></div>
+                    <div class="meta-row price-col"><span class="meta-label">FROM</span><span class="price-val">${price}</span></div>
+                </div>
+            </div>
+        `;
+
+        // change class and inject
+        card.className = "camp-card expired-card theme-red"; 
+        card.innerHTML = expiredHtml;
+
+        // move to expired grid
+        expiredGrid.insertBefore(card, expiredGrid.firstChild);
+
+        // check active grid
+        adjustActiveGrid();
+    }
+
     function updateCountdowns() {
         const timers = document.querySelectorAll('.countdown');
         const now = new Date().getTime();
@@ -16,7 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const distance = target - now;
 
             if (distance < 0) {
-                timer.innerHTML = "Registration Closed";
+                if (!timer.closest('.expired-card')) {
+                    const campCard = timer.closest('.camp-card');
+                    if (campCard) {
+                        convertToExpired(campCard);
+                    }
+                }
                 return;
             }
 
@@ -28,6 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
             timer.innerHTML = `⏱ Closes in: ${days}d ${hours}h ${minutes}m ${seconds}s`;
         });
     }
+    
+    // Initial adjust on load
+    adjustActiveGrid();
+    
     updateCountdowns();
     setInterval(updateCountdowns, 1000);
 
