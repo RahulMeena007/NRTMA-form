@@ -42,58 +42,8 @@
 
         <!-- PROGRESS STEPS REMOVED AS PER REQUEST -->
 
-        <!-- CHOICE SECTION -->
-        <div class="ap-form-card" id="choice-section" style="text-align: center; padding: 40px 20px;">
-            <h2 style="margin-bottom: 20px; font-family: var(--font-head); color: var(--navy);">How would you like to apply?</h2>
-            <p style="margin-bottom: 30px; color: var(--muted);">Choose to either upload a physically filled photocopy/PDF, or fill the entire form online.</p>
-            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                <button id="btnOption1" class="ap-btn ap-btn-primary" style="flex: 1; max-width: 300px; padding: 20px;">
-                    <span style="font-size: 24px; display: block; margin-bottom: 10px;">📄</span>
-                    Upload Direct Photocopy / PDF
-                </button>
-                <button id="btnOption2" class="ap-btn ap-btn-outline" style="flex: 1; max-width: 300px; padding: 20px; color: var(--blue); border-color: var(--blue);">
-                    <span style="font-size: 24px; display: block; margin-bottom: 10px;">💻</span>
-                    Fill Form Online
-                </button>
-            </div>
-        </div>
-
-        <!-- DIRECT UPLOAD CARD (OPTION 1) -->
-        <div class="ap-form-card hidden" id="direct-upload-section" style="padding: 40px 20px; text-align: center;">
-            <h2 style="margin-bottom: 20px; color: var(--navy);">Upload Filled Form</h2>
-            <p style="margin-bottom: 30px; color: var(--muted);">Please upload a scanned photocopy or PDF of your completed application form.</p>
-            
-            <div style="max-width: 400px; margin: 0 auto;">
-                <div class="ap-field" style="text-align: left;">
-                    <label>Participant Name <span class="req">*</span></label>
-                    <input type="text" id="directParticipantName" placeholder="Participant Name" style="margin-bottom: 15px;">
-                </div>
-                <div class="ap-field" style="text-align: left;">
-                    <label>Employee Name <span class="req">*</span></label>
-                    <input type="text" id="directEmployeeName" placeholder="Employee Name" style="margin-bottom: 15px;">
-                </div>
-                <div class="ap-field" style="text-align: left;">
-                    <label>Contact Number <span class="req">*</span></label>
-                    <input type="text" id="directContact" placeholder="10-digit number" style="margin-bottom: 25px;">
-                </div>
-                <div class="ap-field">
-                    <label class="ap-upload-box" id="directUploadBox" style="cursor:pointer; display:block; padding:30px; border: 2px dashed var(--border); border-radius: 8px;">
-                        <input type="file" id="directFileUpload" accept="image/*,.pdf" style="display: none;">
-                        <div id="directUploadIconText">
-                            <span style="font-size: 30px;">⬆️</span>
-                            <p style="margin-top: 10px; color: var(--blue); font-weight: 600;">Click to upload Form</p>
-                            <span style="font-size: 12px; color: var(--muted);">PDF or Image</span>
-                        </div>
-                    </label>
-                </div>
-                <button id="directSubmitBtn" class="ap-btn ap-btn-primary" style="width: 100%; margin-top: 25px; padding: 15px;">Submit Upload</button>
-                <button id="directBackBtn" class="ap-btn" style="width: 100%; margin-top: 10px; background: none; color: var(--muted); border: none;">&larr; Go Back</button>
-            </div>
-        </div>
-
-        <!-- ONLINE FORM CARD (OPTION 2) -->
-        <div class="ap-form-card hidden" id="form-section">
-            <button id="onlineBackBtn" class="ap-btn" style="margin-bottom: 20px; background: none; color: var(--muted); border: none; padding: 0;">&larr; Back to Options</button>
+        <!-- FORM CARD -->
+        <div class="ap-form-card" id="form-section">
             <form id="nrtma-form" novalidate>
 
                 <!-- ───── SECTION 1: GENERAL DETAILS ───── -->
@@ -160,27 +110,8 @@
                             <input type="text" id="experience" name="experience" placeholder="e.g. Trekked to Triund, Basic Mountaineering Course">
                         </div>
                     </div>
-                <!-- ───── REQUIRED DOCUMENTS ───── -->
-                <div class="ap-section-group" style="margin-top: 30px;">
-                    <div class="ap-section-header">
-                        <span class="ap-section-icon">📎</span>
-                        <h2>Required Documents</h2>
-                    </div>
-                    <div class="ap-form-grid">
-                        <div class="ap-field">
-                            <label>Employee Signature <span class="req">*</span></label>
-                            <input type="file" id="employeeSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
-                        </div>
-                        <div class="ap-field">
-                            <label>Applicant Signature <span class="req">*</span></label>
-                            <input type="file" id="applicantSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
-                        </div>
-                        <div class="ap-field ap-span-2">
-                            <label>Medical Document (Under 2MB) <span class="req">*</span></label>
-                            <input type="file" id="medicalDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px;">
-                            <span id="err-medicalDocument" class="ap-err"></span>
-                        </div>
-                    </div>
+                </div>
+
                 </div>
 
                 <button type="submit" id="submitBtn" class="ap-btn ap-btn-primary">Submit Application</button>
