@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loginContainer.style.display = "none";
         dashboardContainer.style.display = "block";
         await fetchSubmissions();
+        await fetchQueries();
     }
 
     async function fetchSubmissions() {
@@ -165,5 +166,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
         modalData.innerHTML = html;
         modal.style.display = "flex";
+    }
+
+    async function fetchQueries() {
+        const queriesTable = document.getElementById("queriesTable");
+        if (!supabase || !queriesTable) return;
+
+        try {
+            const { data, error } = await supabase
+                .from('queries')
+                .select('*');
+
+            if (error) throw error;
+
+            if (!data || data.length === 0) {
+                queriesTable.innerHTML = "<tr><td colspan='4' style='text-align:center;'>No queries found.</td></tr>";
+                return;
+            }
+
+            // Sort queries manually if they have created_at
+            data.sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+
+            queriesTable.innerHTML = "";
+            data.forEach(q => {
+                const tr = document.createElement("tr");
+                
+                const dateObj = new Date(q.created_at);
+                let dateStr = "Unknown Date";
+                if (!isNaN(dateObj)) {
+                    dateStr = dateObj.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+                }
+
+                tr.innerHTML = `
+                    <td>${dateStr}</td>
+                    <td><strong>${q.name || 'N/A'}</strong></td>
+                    <td><a href="mailto:${q.email}">${q.email || 'N/A'}</a></td>
+                    <td>${q.contact || 'N/A'}</td>
+                `;
+                queriesTable.appendChild(tr);
+            });
+        } catch (err) {
+            console.error("Query fetch error", err);
+            queriesTable.innerHTML = `<tr><td colspan="4" style="color:red; text-align:center;">Failed to load queries. (Did you create the queries table in Supabase?)</td></tr>`;
+        }
     }
 });

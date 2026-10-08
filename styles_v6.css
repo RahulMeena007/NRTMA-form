@@ -257,3 +257,33 @@ input:-moz-ui-invalid { box-shadow: none; }
     .medical-grid { grid-template-columns: 1fr; gap: 10px; }
     .medical-grid select { width: 100%; margin-bottom: 10px; }
 }
+
+/* Floating Back Button */
+.floating-back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: #1e3a8a;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.5);
+    font-family: 'Inter', sans-serif;
+}
+.floating-back-btn span {
+    font-size: 1.2rem;
+}
+.floating-back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    background: white;
+}

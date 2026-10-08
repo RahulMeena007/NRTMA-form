@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now — NRTMA Adventure Camps 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="ap-navbar">
+        <div class="ap-nav-brand">
+            <img src="logo_1.png" alt="NRTMA Logo" class="ap-nav-logo">
+            <span>N.R.T.M.A. Portal</span>
+        </div>
+        <ul class="ap-nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="index.html#camps">Camps</a></li>
+            <li><a href="NRTMA_APPLICATION_FORM.pdf" target="_blank">📄 Form PDF</a></li>
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="https://nr.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,4,366" target="_blank" class="ap-official-btn">🚂 Official Portal</a></li>
+        </ul>
+        <button class="ap-hamburger" id="apHamburger">&#9776;</button>
+    </nav>
+
+    <!-- HERO BANNER -->
+    <div class="ap-hero-banner">
+        <div class="ap-hero-overlay"></div>
+        <div class="ap-hero-text">
+            <p class="ap-breadcrumb"><a href="index.html">Home</a> &rsaquo; <span>Application Form</span></p>
+            <h1>Adventure Camp Application</h1>
+            <p>Fill the form below and we will process your registration for NRTMA 2026</p>
+        </div>
+    </div>
+
+    <div class="ap-page-wrap">
+
+        <!-- PROGRESS STEPS REMOVED AS PER REQUEST -->
+
+        <!-- FORM CARD -->
+        <div class="ap-form-card" id="form-section">
+            <form id="nrtma-form" novalidate>
+
+                <!-- ───── SECTION 1: GENERAL DETAILS ───── -->
+                <div class="ap-section-group">
+                    <div class="ap-section-header">
+                        <span class="ap-section-icon">📋</span>
+                        <h2>General Details</h2>
+                    </div>
+
+                    <div class="ap-form-grid">
+                        <div class="ap-field ap-span-2">
+                            <label for="trekName">Name of Trek / Activity Applied For <span class="req">*</span></label>
+                            <input type="text" id="trekName" name="trekName" placeholder="e.g. Trekking Camp — Panchmarhi" data-required="true">
+                            <span class="ap-err" id="err-trekName"></span>
+                        </div>
+                        <div class="ap-field">
+                            <label for="participantName">1. Name of Participant <span class="req">*</span></label>
+                            <input type="text" id="participantName" name="participantName" placeholder="Full name as in ID" data-required="true">
+                            <span class="ap-err" id="err-participantName"></span>
+                        </div>
+                        <div class="ap-field">
+                            <label for="employeeName">2. Name of Employee <span class="req">*</span></label>
+                            <input type="text" id="employeeName" name="employeeName" placeholder="Railway employee full name" data-required="true">
+                            <span class="ap-err" id="err-employeeName"></span>
+                        </div>
+                        <div class="ap-field">
+                            <label for="relation">3. Relation with Railway Employee <span class="req">*</span></label>
+                            <input type="text" id="relation" name="relation" placeholder="Self / Spouse / Child" data-required="true">
+                            <span class="ap-err" id="err-relation"></span>
+                        </div>
+                        <div class="ap-field">
+                            <label for="designation">4. Designation <span class="req">*</span></label>
+                            <input type="text" id="designation" name="designation" placeholder="e.g. Senior Section Engineer" data-required="true">
+                            <span class="ap-err" id="err-designation"></span>
+                        </div>
+                        <div class="ap-field ap-span-2">
+                            <label for="officeAddress">5. Office Address</label>
+                            <input type="text" id="officeAddress" name="officeAddress" placeholder="Department, Division, City">
+                        </div>
+                        <div class="ap-field">
+                            <label for="dob">6. Date of Birth (Participant)</label>
+                            <input type="date" id="dob" name="dob">
+                        </div>
+                        <div class="ap-field">
+                            <label for="doa">7. Date of Appointment (Employee)</label>
+                            <input type="date" id="doa" name="doa">
+                        </div>
+                        <div class="ap-field">
+                            <label for="contact">8. Contact Number <span class="req">*</span></label>
+                            <input type="tel" id="contact" name="contact" placeholder="10-digit mobile number" pattern="[0-9]{10}" data-required="true">
+                            <span class="ap-err" id="err-contact"></span>
+                        </div>
+                        <div class="ap-field">
+                            <label for="email">Email Address <span class="req">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="example@gmail.com" data-required="true">
+                            <span class="ap-err" id="err-email"></span>
+                        </div>
+                        <div class="ap-field ap-span-2">
+                            <label for="residentialAddress">9. Residential Address</label>
+                            <input type="text" id="residentialAddress" name="residentialAddress" placeholder="House No., Street, Colony, City, PIN">
+                        </div>
+                        <div class="ap-field ap-span-2">
+                            <label for="experience">10. Experience in Adventure Activities (if any)</label>
+                            <input type="text" id="experience" name="experience" placeholder="e.g. Trekked to Triund, Basic Mountaineering Course">
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+                <button type="submit" id="submitBtn" class="ap-btn ap-btn-primary">Submit Application</button>
+            </form>
+        </div>
+
+
+    </div><!-- /ap-page-wrap -->
+
+    <!-- SUCCESS POPUP -->
+    <div class="ap-popup-overlay" id="successPopup">
+        <div class="ap-popup">
+            <div class="ap-popup-icon">🎉</div>
+            <h3>Successfully Submitted!</h3>
+            <p>Your application form and photo have been securely uploaded to our records. You will be contacted by NRTMA team shortly.</p>
+            <button id="closePopupBtn" class="ap-btn ap-btn-primary">Close &amp; Fill Another</button>
+        </div>
+    </div>
+
+    <!-- MINIMAL FOOTER -->
+    <footer class="ap-footer">
+        <p>NRTMA Adventure Portal 2026 &nbsp;|&nbsp; Northern Railway, Ministry of Railways, Govt. of India &nbsp;|&nbsp;
+            <a href="admin.html">Admin Portal</a> &nbsp;|&nbsp;
+            <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,333" target="_blank">Privacy Policy</a> &nbsp;|&nbsp;
+            <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,286" target="_blank">Disclaimer</a>
+        </p>
+    </footer>
+
+    <img id="bg-image" src="form-bg.jpg" alt="form background" style="display:none;">
+    <script src="app_v6.js"></script>
+
+    <script>
+        // Hamburger menu toggle
+        document.getElementById('apHamburger').addEventListener('click', () => {
+            document.querySelector('.ap-nav-links').classList.toggle('open');
+        });
+        // Photo upload preview
+        document.getElementById('photoUpload').addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = e => {
+                const wrap = document.getElementById('uploadIconText');
+                wrap.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-height:100px; border-radius:8px; margin-bottom:8px;">`;
+                document.querySelector('#uploadBox p').textContent = file.name;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>

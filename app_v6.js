@@ -246,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (dbErr) throw dbErr;
 
             // Success!
-            successPopup.style.display = "flex";
+            successPopup.classList.add("show");
 
         } catch (error) {
             console.error(error);
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closePopupBtn.addEventListener("click", () => {
-        successPopup.style.display = "none";
+        successPopup.classList.remove("show");
         document.getElementById("nrtma-form").reset();
         userPhotoImg = null;
         rawPhotoFile = null;
