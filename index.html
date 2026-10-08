@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NRTMA Adventure Application Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles_v6.css">
     <!-- Cursive font for handwriting effect -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
     <!-- UI font -->
@@ -16,151 +16,166 @@
     <div class="app-container">
         <header>
             <div class="header-content">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/45/Indian_Railway_Logo_2.svg/1200px-Indian_Railway_Logo_2.svg.png" alt="Logo" class="logo">
-                <h1>NRTMA Application Portal</h1>
-                <p>Fill out the form digitally and generate a printable copy instantly.</p>
+                <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; align-items: center;">
+                    <img src="logo_1.png" alt="Logo 1" class="logo">
+                    <img src="logo_2.png" alt="Logo 2" class="logo">
+                </div>
+                <h1>NRTMA Application Form</h1>
+                <p>Fill out your details below</p>
             </div>
         </header>
 
         <main>
-            <div class="split-layout">
-                <!-- Form Section -->
-                <div class="panel form-panel glass">
-                    <h2>Fill Application Details</h2>
-                    <form id="nrtma-form">
-                        <div class="form-section">
-                            <h3>General Details</h3>
+            <!-- FORM SECTION -->
+            <div class="glass centered-form" id="form-section">
+                <form id="nrtma-form">
+                    <div class="form-section-group">
+                        <h3>General Details</h3>
+                        
+                        <div class="form-group">
+                            <label for="trekName">Name of trek/activity applied for<span class="req-star" title="Compulsory Entry">*</span></label>
+                            <input type="text" id="trekName" name="trekName" placeholder="e.g. Manali Trek" data-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="participantName">1. Name of Participant<span class="req-star" title="Compulsory Entry">*</span></label>
+                            <input type="text" id="participantName" name="participantName" data-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="employeeName">2. Name of Employee<span class="req-star" title="Compulsory Entry">*</span></label>
+                            <input type="text" id="employeeName" name="employeeName" data-required="true">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="relation">3. Relation with Rly. employee<span class="req-star" title="Compulsory Entry">*</span></label>
+                                <input type="text" id="relation" name="relation" data-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="designation">4. Designation<span class="req-star" title="Compulsory Entry">*</span></label>
+                                <input type="text" id="designation" name="designation" data-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="officeAddress">5. Office address</label>
+                            <input type="text" id="officeAddress" name="officeAddress">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dob">6. DOB (of participant)</label>
+                                <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="form-group">
+                                <label for="doa">4. DOA (of employee)</label>
+                                <input type="text" id="doa" name="doa" placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact">7. Contact no(s)<span class="req-star" title="Compulsory Entry">*</span></label>
+                                <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" placeholder="10 digit number" data-required="true">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail<span class="req-star" title="Compulsory Entry">*</span></label>
+                                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+\-]+@gmail\.com" placeholder="example@gmail.com" data-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="residentialAddress">8. Residential address</label>
+                            <input type="text" id="residentialAddress" name="residentialAddress">
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">9. Experience in adventure (if any)</label>
+                            <input type="text" id="experience" name="experience">
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3>Uploads</h3>
+                        <div class="form-group">
+                            <label for="photoUpload">Participant Photo (Passport Size)<span class="req-star" title="Compulsory Entry">*</span></label>
+                            <input type="file" id="photoUpload" name="photoUpload" accept="image/*" data-required="true">
+                        </div>
+                    </div>
+
+                    <div class="form-section-group">
+                        <h3>Medical Certificate</h3>
+                        <div class="form-group">
+                            <label for="illness">1. Present/Past illness</label>
+                            <input type="text" id="illness" name="illness" placeholder="None">
+                        </div>
+                        <div class="form-group">
+                            <label for="injuries">2. Injuries/operation</label>
+                            <input type="text" id="injuries" name="injuries" placeholder="None">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="allergy">3. Known allergy</label>
+                                <input type="text" id="allergy" name="allergy" placeholder="None">
+                            </div>
+                            <div class="form-group">
+                                <label for="bloodGroup">4. Blood Group</label>
+                                <input type="text" id="bloodGroup" name="bloodGroup" placeholder="e.g. O+">
+                            </div>
+                        </div>
+                        <p class="sub-label">5. Is the applicant suffering from:</p>
+                        <div class="medical-grid">
+                            <label>Infectious disease</label>
+                            <select id="infectious"><option value="No">No</option><option value="Yes">Yes</option></select>
                             
-                            <div class="form-group">
-                                <label for="trekName">Name of trek/activity applied for</label>
-                                <input type="text" id="trekName" name="trekName" placeholder="e.g. Manali Trek" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="participantName">1. Name of Participant</label>
-                                <input type="text" id="participantName" name="participantName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="employeeName">2. Name of Employee</label>
-                                <input type="text" id="employeeName" name="employeeName" required>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="relation">3. Relation with Rly. employee</label>
-                                    <input type="text" id="relation" name="relation" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="designation">4. Designation</label>
-                                    <input type="text" id="designation" name="designation" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="officeAddress">5. Office address</label>
-                                <input type="text" id="officeAddress" name="officeAddress">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="dob">6. DOB (of participant)</label>
-                                    <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY">
-                                </div>
-                                <div class="form-group">
-                                    <label for="doa">4. DOA (of employee)</label>
-                                    <input type="text" id="doa" name="doa" placeholder="DD/MM/YYYY">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contact">7. Contact no(s)</label>
-                                    <input type="text" id="contact" name="contact">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" id="email" name="email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="residentialAddress">8. Residential address</label>
-                                <input type="text" id="residentialAddress" name="residentialAddress">
-                            </div>
-                            <div class="form-group">
-                                <label for="experience">9. Experience in adventure (if any)</label>
-                                <input type="text" id="experience" name="experience">
-                            </div>
+                            <label>A skin disease</label>
+                            <select id="skin"><option value="No">No</option><option value="Yes">Yes</option></select>
+                            
+                            <label>Heart trouble</label>
+                            <select id="heart"><option value="No">No</option><option value="Yes">Yes</option></select>
+                            
+                            <label>Asthmatic</label>
+                            <select id="asthmatic"><option value="No">No</option><option value="Yes">Yes</option></select>
+                            
+                            <label>Any other disease</label>
+                            <select id="otherDisease"><option value="No">No</option><option value="Yes">Yes</option></select>
                         </div>
+                    </div>
 
-                        <div class="form-section">
-                            <h3>Uploads</h3>
-                            <div class="form-group">
-                                <label for="photoUpload">Participant Photo (Passport Size)</label>
-                                <input type="file" id="photoUpload" name="photoUpload" accept="image/*">
-                            </div>
-                        </div>
+                    <button type="button" id="previewBtn" class="btn primary-btn">Review Form</button>
+                </form>
+            </div>
 
-                        <div class="form-section">
-                            <h3>Medical Certificate</h3>
-                            <div class="form-group">
-                                <label for="illness">1. Present/Past illness</label>
-                                <input type="text" id="illness" name="illness" placeholder="None">
-                            </div>
-                            <div class="form-group">
-                                <label for="injuries">2. Injuries/operation</label>
-                                <input type="text" id="injuries" name="injuries" placeholder="None">
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="allergy">3. Known allergy</label>
-                                    <input type="text" id="allergy" name="allergy" placeholder="None">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bloodGroup">4. Blood Group</label>
-                                    <input type="text" id="bloodGroup" name="bloodGroup" placeholder="e.g. O+">
-                                </div>
-                            </div>
-                            <p class="sub-label">5. Is the applicant suffering from:</p>
-                            <div class="medical-grid">
-                                <label>Infectious disease</label>
-                                <select id="infectious"><option value="No">No</option><option value="Yes">Yes</option></select>
-                                
-                                <label>A skin disease</label>
-                                <select id="skin"><option value="No">No</option><option value="Yes">Yes</option></select>
-                                
-                                <label>Heart trouble</label>
-                                <select id="heart"><option value="No">No</option><option value="Yes">Yes</option></select>
-                                
-                                <label>Asthmatic</label>
-                                <select id="asthmatic"><option value="No">No</option><option value="Yes">Yes</option></select>
-                                
-                                <label>Any other disease</label>
-                                <select id="otherDisease"><option value="No">No</option><option value="Yes">Yes</option></select>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn primary-btn">Generate & Upload Form</button>
-                        <p id="status-message" class="status"></p>
-                    </form>
+            <!-- PREVIEW SECTION -->
+            <div class="preview-layout hidden" id="preview-section">
+                <div class="glass" style="width: 100%; text-align: center; margin-bottom: 20px;">
+                    <h2 style="color: #4f46e5; margin-bottom: 10px;">Review Your Form</h2>
+                    <p>Please double check the printed details below before submitting.</p>
                 </div>
 
-                <!-- Preview Section -->
-                <div class="panel preview-panel glass">
-                    <div class="preview-header">
-                        <h2>Live Preview</h2>
-                        <button id="downloadBtn" class="btn secondary-btn" disabled>Download Image</button>
-                    </div>
-                    <div class="canvas-container">
-                        <!-- Canvas dimension matches background image roughly -->
-                        <canvas id="formCanvas" width="654" height="900"></canvas>
-                    </div>
+                <div class="preview-container">
+                    <canvas id="formCanvas" width="654" height="900"></canvas>
+                </div>
+
+                <div class="preview-actions">
+                    <button type="button" id="editBtn" class="btn secondary-btn">Go Back & Edit</button>
+                    <button type="button" id="submitUploadBtn" class="btn success-btn">Confirm & Upload</button>
                 </div>
             </div>
+
+            <!-- SUCCESS POPUP -->
+            <div class="popup-overlay" id="successPopup">
+                <div class="popup-content">
+                    <div class="popup-icon">✅</div>
+                    <h3 class="popup-title">Successfully Submitted!</h3>
+                    <p class="popup-text">Your application form and photo have been uploaded to our servers.</p>
+                    <button id="closePopupBtn" class="btn primary-btn">Close & Fill Another</button>
+                </div>
+            </div>
+            
         </main>
         
         <footer>
-            <p>Generated securely with HTML5 Canvas. Setup on Vercel & Supabase.</p>
+            <p>Generated securely with HTML5 Canvas. <a href="admin.html" style="color: #9ca3af; text-decoration: none;">Admin</a></p>
         </footer>
     </div>
     
     <!-- Load background image silently so we can draw it on canvas -->
     <img id="bg-image" src="form-bg.jpg" alt="form background" style="display:none;">
 
-    <script src="app.js"></script>
+    <script src="app_v6.js"></script>
 </body>
 </html>
