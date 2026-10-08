@@ -23,7 +23,7 @@
     --font-heading: 'Outfit', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
 
 body {
@@ -31,6 +31,8 @@ body {
     background: var(--body-bg);
     color: var(--dark);
     min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* ── NAVBAR ── */
@@ -271,7 +273,7 @@ input[type="tel"],
 input[type="date"],
 select {
     font-family: var(--font-main);
-    font-size: 0.95rem;
+    font-size: 1rem; /* Prevents iOS auto-zoom */
     color: var(--dark);
     background: white;
     border: 1.5px solid var(--border);

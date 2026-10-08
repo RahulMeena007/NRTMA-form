@@ -25,9 +25,12 @@
     --font-head:  'Outfit', 'Inter', sans-serif;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font); background: var(--bg); color: var(--slate); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body { 
+    font-family: var(--font); background: var(--bg); color: var(--slate); line-height: 1.6; 
+    -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; 
+}
 
 /* ── NAVBAR ─────────────────────────────────── */
 .navbar {
@@ -461,7 +464,7 @@ body { font-family: var(--font); background: var(--bg); color: var(--slate); lin
 .q-input {
     width: 100%; padding: 11px 14px; margin-bottom: 12px;
     border: 1.5px solid var(--border); border-radius: 10px;
-    font-family: var(--font); font-size: .95rem; outline: none;
+    font-family: var(--font); font-size: 1rem; outline: none;
     transition: border-color .2s;
 }
 .q-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
