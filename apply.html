@@ -52,13 +52,17 @@
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; width: 100%;">
                 <button id="btnOption1" class="ap-btn ap-btn-outline" style="flex: 1 1 200px; width: 100%; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: 2px solid var(--blue); transition: all 0.3s ease;">
                     <span style="font-size: 22px; color: var(--blue);">📄</span>
-                    <span style="font-size: 1rem; font-weight: 600;">Upload Direct Pdf</span>
+                    <span style="font-size: 1rem; font-weight: 600;">Upload Filled Form</span>
                 </button>
                 
-                <button id="btnOption2" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; width: 100%; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: 2px solid transparent; transition: all 0.3s ease;">
-                    <span style="font-size: 22px;">💻</span>
-                    <span style="font-size: 1rem; font-weight: 600;">Fill Form Online</span>
+                <button id="btnOption2" style="display: none;">
+                    Fill Form Online
                 </button>
+                
+                <a href="https://nr.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,4,366" target="_blank" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; width: 100%; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; text-decoration: none; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: 2px solid transparent; transition: all 0.3s ease;">
+                    <span style="font-size: 22px;">💻</span>
+                    <span style="font-size: 1rem; font-weight: 600;">Apply Online</span>
+                </a>
             </div>
         </div>
 
@@ -70,16 +74,10 @@
             <div style="max-width: 400px; margin: 0 auto;">
                 <div class="ap-field" style="text-align: left;">
                     <label>Participant Name <span class="req">*</span></label>
-                    <input type="text" id="directParticipantName" placeholder="Participant Name" style="margin-bottom: 15px;">
+                    <input type="text" id="directParticipantName" placeholder="Participant Name" style="margin-bottom: 25px;">
                 </div>
-                <div class="ap-field" style="text-align: left;">
-                    <label>Employee Name <span class="req">*</span></label>
-                    <input type="text" id="directEmployeeName" placeholder="Employee Name" style="margin-bottom: 15px;">
-                </div>
-                <div class="ap-field" style="text-align: left;">
-                    <label>Contact Number <span class="req">*</span></label>
-                    <input type="text" id="directContact" placeholder="10-digit number" style="margin-bottom: 25px;">
-                </div>
+                <input type="hidden" id="directEmployeeName" value="N/A">
+                <input type="hidden" id="directContact" value="N/A">
                 <div class="ap-field">
                     <label class="ap-upload-box" id="directUploadBox" style="cursor:pointer; display:block; padding:30px; border: 2px dashed var(--border); border-radius: 8px;">
                         <input type="file" id="directFileUpload" accept="image/*,.pdf" style="display: none;">
