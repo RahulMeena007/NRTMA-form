@@ -10,9 +10,6 @@
 </head>
 <body>
 
-
-
-
     <!-- NAVBAR -->
     <nav class="ap-navbar">
         <div class="ap-nav-brand">
@@ -43,27 +40,19 @@
 
     <div class="ap-page-wrap">
 
-        <!-- PROGRESS STEPS REMOVED AS PER REQUEST -->
-
-        <!-- CHOICE SECTION -->
-        <div class="ap-form-card" id="choice-section" style="text-align: center; padding: 40px 20px;">
-            <h2 style="margin-bottom: 20px; font-family: var(--font-head); color: var(--navy);">How would you like to apply?</h2>
-            <p style="margin-bottom: 30px; color: var(--muted);">Choose to either upload a physically filled photocopy/PDF, or fill the entire form online.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; width: 100%;">
-                <button id="btnOption1" class="ap-btn ap-btn-outline" style="flex: 1 1 200px; width: 100%; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: 2px solid var(--blue); transition: all 0.3s ease;">
-                    <span style="font-size: 22px; color: var(--blue);">??</span>
-                    <span style="font-size: 1rem; font-weight: 600;">Upload Filled Form</span>
-                </button>
-                <a href="https://nr.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,4,366" target="_blank" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; width: 100%; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; text-decoration: none; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border: 2px solid transparent; transition: all 0.3s ease;">
-                    <span style="font-size: 22px;">??</span>
-                    <span style="font-size: 1rem; font-weight: 600;">Apply Online</span>
-                </a>
-            </div>
+        <div id="choice-section" style="display: flex; justify-content: center; width: 100%; margin-top: 40px;">
+            <button id="btnOption1" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease;">
+                <span style="font-size: 22px;">??</span>
+                <span style="font-size: 1rem; font-weight: 600;">Apply Now</span>
+            </button>
         </div>
 
-        <!-- ONLINE FORM CARD<!-- ONLINE FORM CARD -->
+
+        <!-- PROGRESS STEPS REMOVED AS PER REQUEST -->
+
+        <!-- FORM CARD -->
         <div class="ap-form-card hidden" id="form-section">
-            <button id="onlineBackBtn" class="ap-btn" style="margin-bottom: 20px; background: none; color: var(--muted); border: none; padding: 0;">&larr; Back to Options</button>
+            <button id="onlineBackBtn" class="ap-btn" type="button" style="margin-bottom: 20px; background: none; color: var(--muted); border: none; padding: 0;">&larr; Back to Options</button>
             <form id="nrtma-form" novalidate>
 
                 <!-- ───── SECTION 1: GENERAL DETAILS ───── -->
@@ -100,15 +89,15 @@
                             <span class="ap-err" id="err-designation"></span>
                         </div>
                         <div class="ap-field ap-span-2">
-                            <label for="officeAddress">5. Office Address <span class="req">*</span></label>
+                            <label for="officeAddress">5. Office Address</label>
                             <input type="text" id="officeAddress" name="officeAddress" placeholder="Department, Division, City">
                         </div>
                         <div class="ap-field">
-                            <label for="dob">6. Date of Birth (Participant) <span class="req">*</span></label>
+                            <label for="dob">6. Date of Birth (Participant)</label>
                             <input type="date" id="dob" name="dob">
                         </div>
                         <div class="ap-field">
-                            <label for="doa">7. Date of Appointment (Employee) <span class="req">*</span></label>
+                            <label for="doa">7. Date of Appointment (Employee)</label>
                             <input type="date" id="doa" name="doa">
                         </div>
                         <div class="ap-field">
@@ -122,49 +111,16 @@
                             <span class="ap-err" id="err-email"></span>
                         </div>
                         <div class="ap-field ap-span-2">
-                            <label for="residentialAddress">9. Residential Address <span class="req">*</span></label>
+                            <label for="residentialAddress">9. Residential Address</label>
                             <input type="text" id="residentialAddress" name="residentialAddress" placeholder="House No., Street, Colony, City, PIN">
                         </div>
                         <div class="ap-field ap-span-2">
-                            <label for="experience">10. Experience in Adventure Activities (if any) <span class="req">*</span></label>
+                            <label for="experience">10. Experience in Adventure Activities (if any)</label>
                             <input type="text" id="experience" name="experience" placeholder="e.g. Trekked to Triund, Basic Mountaineering Course">
                         </div>
                     </div>
-                <!-- ───── REQUIRED DOCUMENTS ───── -->
-                <div class="ap-section-group" style="margin-top: 30px;">
-                    <div class="ap-section-header">
-                        <span class="ap-section-icon">📎</span>
-                        <h2>Required Documents</h2>
-                    </div>
-                    <div class="ap-form-grid">
-                        <div class="ap-field">
-                            <label style="display: block; margin-bottom: 8px; color: #374151; font-weight: 600;">Passport Photo <span class="req">*</span></label>
-                            <label class="ap-upload-box" id="uploadBox" style="cursor:pointer; display:flex; align-items: center; justify-content: center; padding:10px; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; transition: all 0.2s; height: 42px;">
-                                <input type="file" id="photoUpload" accept="image/*" style="display: none;" data-required="true">
-                                <div id="uploadIconText" style="display: flex; align-items: center; gap: 8px;">
-                                    <span style="font-size: 18px;">📷</span>
-                                    <span style="margin: 0; color: var(--blue); font-weight: 500; font-size: 14px;">Click to Upload</span>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="ap-field">
-                            <label>Employee Signature <span class="req">*</span></label>
-                            <input type="file" id="employeeSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
-                        </div>
-                        <div class="ap-field">
-                            <label>Applicant Signature <span class="req">*</span></label>
-                            <input type="file" id="applicantSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
-                        </div>
-                        <div class="ap-field">
-                            <label>Medical Document (Under 2MB) <span class="req">*</span></label>
-                            <input type="file" id="medicalDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
-                            <span id="err-medicalDocument" class="ap-err"></span>
-                        </div>
-                        <div class="ap-field ap-span-2">
-                            <label>Completed Application Form (PDF or Image) <span class="req">*</span></label>
-                            <input type="file" id="filledFormDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; height: 44px; background: #f8fafc;">
-                        </div>
-                    </div>
+                </div>
+
                 </div>
 
                 <button type="submit" id="submitBtn" class="ap-btn ap-btn-primary">Submit Application</button>
@@ -187,7 +143,7 @@
     <!-- MINIMAL FOOTER -->
     <footer class="ap-footer">
         <p>NRTMA Adventure Portal 2026 &nbsp;|&nbsp; Northern Railway, Ministry of Railways, Govt. of India &nbsp;|&nbsp;
-            <a href="admin.html">Admin Staff</a> &nbsp;|&nbsp;
+            <a href="admin.html">Admin Portal</a> &nbsp;|&nbsp;
             <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,333" target="_blank">Privacy Policy</a> &nbsp;|&nbsp;
             <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,286" target="_blank">Disclaimer</a>
         </p>

@@ -1,4 +1,4 @@
-
+js = """
 document.addEventListener("DOMContentLoaded", () => {
     const btnOption1 = document.getElementById("btnOption1");
     const choiceSection = document.getElementById("choice-section");
@@ -84,3 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+"""
+
+with open("app_v6.js", "w", encoding="utf-8") as f:
+    f.write(js)
