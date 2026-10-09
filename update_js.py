@@ -1,24 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Supabase configuration
-    const SUPABASE_URL = 'https://dlqsexaiunsploctiwza.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_x5Zm3FXPFNH7tZcq5S3FmA_olJJS5LT';
-    const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+with open("app_v6.js", "r", encoding="utf-8") as f:
+    js = f.read()
 
-
-    // UI Elements
-    const choiceSection = document.getElementById("choice-section");
-    const directSection = document.getElementById("direct-upload-section");
-    const btnOption1 = document.getElementById("btnOption1");
-    const btnOption2 = document.getElementById("btnOption2");
-    const onlineBackBtn = document.getElementById("onlineBackBtn");
-    const directBackBtn = document.getElementById("directBackBtn");
-    const directSubmitBtn = document.getElementById("directSubmitBtn");
-    
-    // Switch Views
-    btnOption1.addEventListener("click", () => { choiceSection.classList.add("hidden"); formSection.classList.remove("hidden"); });
+# Replace switch view section
+switch_target = """    // Switch Views
+    btnOption1.addEventListener("click", () => { choiceSection.classList.add("hidden"); directSection.classList.remove("hidden"); });
+    btnOption2.addEventListener("click", () => { choiceSection.classList.add("hidden"); formSection.classList.remove("hidden"); });
     onlineBackBtn.addEventListener("click", () => { formSection.classList.add("hidden"); choiceSection.classList.remove("hidden"); });
+    directBackBtn.addEventListener("click", () => { directSection.classList.add("hidden"); choiceSection.classList.remove("hidden"); });"""
 
-    
+switch_new = """    // Switch Views
+    btnOption1.addEventListener("click", () => { choiceSection.classList.add("hidden"); formSection.classList.remove("hidden"); });
+    onlineBackBtn.addEventListener("click", () => { formSection.classList.add("hidden"); choiceSection.classList.remove("hidden"); });"""
+
+js = js.replace(switch_target, switch_new)
+
+new_logic = """
     // File uploads UI logic
     document.getElementById("photoUpload").addEventListener("change", (e) => {
         if(e.target.files[0]) document.getElementById("uploadBox").innerHTML = "<p>" + e.target.files[0].name + "</p>";
@@ -54,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         
         const phoneVal = document.getElementById("contact").value.trim();
-        if(phoneVal && !/^\d{10}$/.test(phoneVal)) {
+        if(phoneVal && !/^\\d{10}$/.test(phoneVal)) {
             alert("Mobile number must be exactly 10 digits.");
             document.getElementById("contact").classList.add("ap-invalid");
             valid = false;
@@ -138,3 +134,13 @@ document.addEventListener("DOMContentLoaded", () => {
         location.reload();
     });
 });
+"""
+
+idx = js.find("// Direct Upload Handlers")
+if idx != -1:
+    js = js[:idx] + new_logic
+else:
+    js = js + new_logic
+
+with open("app_v6.js", "w", encoding="utf-8") as f:
+    f.write(js)
