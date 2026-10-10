@@ -46,12 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     closeModal.addEventListener("click", () => {
-        modal.style.display = "none";
+        modal.classList.remove("show");
     });
 
     window.addEventListener("click", (e) => {
         if (e.target === modal) {
-            modal.style.display = "none";
+            modal.classList.remove("show");
         }
     });
 
@@ -139,32 +139,47 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function openDetailsModal(row) {
-        let html = `
-            <p><strong>Database ID:</strong> ${row.id}</p>
-            <p><strong>Submitted At:</strong> ${new Date(row.created_at).toLocaleString()}</p>
-            <p><strong>Participant Name:</strong> ${row.participant_name}</p>
-            <p><strong>Employee Name:</strong> ${row.employee_name}</p>
-            <p><strong>Contact:</strong> ${row.contact}</p>
-            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ccc;">
-            <h4 style="margin-bottom: 10px;">Raw Form Entries (JSON)</h4>
-        `;
+        const titleEl = document.getElementById('modalTitle');
+        if(titleEl) titleEl.innerText = `Application Details: ${row.participant_name || 'N/A'}`;
         
-        // Loop through the raw_data JSON object
+        let rawData = {};
         if (row.raw_data) {
-            html += `<table style="width:100%; border:1px solid #eee;">`;
-            for (const [key, value] of Object.entries(row.raw_data)) {
-                html += `<tr>
-                            <td style="background:#f9fafb; font-weight:600; width:40%;">${key}</td>
-                            <td>${value || '<em>blank</em>'}</td>
-                         </tr>`;
-            }
-            html += `</table>`;
-        } else {
-            html += `<p>No extra raw data saved.</p>`;
+            try {
+                rawData = typeof row.raw_data === 'string' ? JSON.parse(row.raw_data) : row.raw_data;
+            } catch(e) {}
         }
-
-        modalData.innerHTML = html;
-        modal.style.display = "flex";
+        
+        const md = document.getElementById('modalData');
+        let html = '';
+        
+        const addRow = (label, val) => {
+            html += `<div class="data-row"><div class="data-label">${label}</div><div class="data-value">${val || '<em>N/A</em>'}</div></div>`;
+        };
+        
+        addRow("Database ID", row.id);
+        addRow("Submitted At", new Date(row.created_at).toLocaleString());
+        
+        if (rawData) {
+            const keys = Object.keys(rawData).filter(k => k !== 'urls' && k !== 'submitted_at');
+            keys.forEach(k => {
+                const label = k.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+                addRow(label, rawData[k]);
+            });
+            
+            if (rawData.urls && rawData.urls.filledFormDocument) {
+                html += `<div class="data-row" style="margin-top: 15px;">
+                            <div class="data-label" style="color:var(--navy);">Attached Document</div>
+                            <div class="data-value">
+                                <a href="${rawData.urls.filledFormDocument}" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 14px;">
+                                    View PDF Document
+                                </a>
+                            </div>
+                         </div>`;
+            }
+        }
+        
+        md.innerHTML = html;
+        modal.classList.add("show");
     }
 
     async function fetchQueries() {
