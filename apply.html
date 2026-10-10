@@ -184,25 +184,14 @@
     </footer>
 
     <img id="bg-image" src="form-bg.jpg" alt="form background" style="display:none;">
-    <script src="app_v6.js?v=2"></script>
+    <script src="app_v6.js?v=6"></script>
 
     <script>
         // Hamburger menu toggle
         document.getElementById('apHamburger').addEventListener('click', () => {
             document.querySelector('.ap-nav-links').classList.toggle('open');
         });
-        // Photo upload preview
-        document.getElementById('photoUpload').addEventListener('change', function () {
-            const file = this.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = e => {
-                const wrap = document.getElementById('uploadIconText');
-                wrap.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-height:100px; border-radius:8px; margin-bottom:8px;">`;
-                document.querySelector('#uploadBox p').textContent = file.name;
-            };
-            reader.readAsDataURL(file);
-        });
+        
     </script>
 </body>
 </html>
