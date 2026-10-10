@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     dateStr = `${dd}/${mm}/${yyyy} <br><span style="font-size:0.85rem;color:#6b7280">${time}</span>`;
                 }
 
-                const photoSrc = (rawData && rawData.photo_url) ? rawData.photo_url : '';
+                const photoSrc = (rawData && rawData.urls && rawData.urls.photoUpload) ? rawData.urls.photoUpload : (rawData.photo_url || '');
                 const photoHtml = photoSrc 
                     ? `<a href="${photoSrc}" target="_blank"><img src="${photoSrc}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid #ccc;"></a>`
                     : `<span style="color:#9ca3af; font-size: 0.8rem;">No Photo</span>`;
@@ -114,11 +114,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${photoHtml}</td>
                     <td><strong>${row.participant_name || 'N/A'}</strong></td>
                     <td>${row.employee_name || 'N/A'}</td>
+
                     <td>
-                        ${row.form_image_url 
-                            ? `<a href="${row.form_image_url}" target="_blank" style="color: #4f46e5; font-weight: 500;">View Form Image</a>` 
-                            : 'No Image'}
+                        <div style="display:flex; flex-direction:column; gap:5px; font-size:0.9rem;">
+                        ${(rawData && rawData.urls && rawData.urls.medicalDocument) ? `<a href="${rawData.urls.medicalDocument}" target="_blank" style="color:#0ea5e9;">Medical Doc</a>` : ''}
+                        ${(rawData && rawData.urls && rawData.urls.applicantSignature) ? `<a href="${rawData.urls.applicantSignature}" target="_blank" style="color:#0ea5e9;">App Sign</a>` : ''}
+                        ${(rawData && rawData.urls && rawData.urls.employeeSignature) ? `<a href="${rawData.urls.employeeSignature}" target="_blank" style="color:#0ea5e9;">Emp Sign</a>` : ''}
+                        ${(rawData && rawData.urls && rawData.urls.filledFormDocument) ? `<a href="${rawData.urls.filledFormDocument}" target="_blank" style="color:#10b981; font-weight:600;">Filled Form</a>` : ''}
+                        </div>
                     </td>
+
                     <td>
                         <button class="details-btn">View All Typed Data</button>
                     </td>

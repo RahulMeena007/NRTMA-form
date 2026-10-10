@@ -1,57 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply Now — NRTMA Adventure Camps 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="stylesheet" href="apply.css">
-</head>
-<body>
+with open("apply.html", "r", encoding="utf-8") as f:
+    html = f.read()
 
-    <!-- NAVBAR -->
-    <nav class="ap-navbar">
-        <div class="ap-nav-brand">
-            <img src="logo_1.png" alt="NRTMA Logo" class="ap-nav-logo">
-            <span>N.R.T.M.A. Portal</span>
-        </div>
-        <ul class="ap-nav-links">
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="index.html#camps">Camps</a></li>
-            <li><a href="NRTMA_APPLICATION_FORM.pdf" target="_blank">📄 Form PDF</a></li>
-            <li><a href="ACTION_PLAN_2026.pdf" target="_blank">📘 Action Plan</a></li>
-            <li><a href="index.html#about">About Us</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="https://nr.indianrailways.gov.in/view_section.jsp?fontColor=black&backgroundColor=LIGHTSTEELBLUE&lang=0&id=0,4,366" target="_blank" class="ap-official-btn">🚂 Official Portal</a></li>
-        </ul>
-        <button class="ap-hamburger" id="apHamburger">&#9776;</button>
-    </nav>
+import re
 
-    <!-- HERO BANNER -->
-    <div class="ap-hero-banner">
-        <div class="ap-hero-overlay"></div>
-        <div class="ap-hero-text">
-            <p class="ap-breadcrumb"><a href="index.html">Home</a> &rsaquo; <span>Application Form</span></p>
-            <h1>Adventure Camp Application</h1>
-            <p>Fill the form below and we will process your registration for NRTMA 2026</p>
-        </div>
-    </div>
+# Fix button emoji
+html = html.replace('??', '')
 
-    <div class="ap-page-wrap">
-
-        <div id="choice-section" style="display: flex; justify-content: center; width: 100%; margin-top: 40px;">
-            <button id="btnOption1" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease;">
-                <span style="font-size: 22px;"></span>
-                <span style="font-size: 1rem; font-weight: 600;">Apply Now</span>
-            </button>
-        </div>
-
-
-        <!-- PROGRESS STEPS REMOVED AS PER REQUEST -->
-
-        <!-- FORM CARD -->
-        
+form_html = """
         <div class="ap-form-card hidden" id="form-section" style="max-width: 900px; margin: 0 auto;">
             <button id="onlineBackBtn" class="ap-btn" type="button" style="margin-bottom: 20px; background: none; color: var(--muted); border: none; padding: 0; font-size: 16px;">&larr; Go Back</button>
             <form id="nrtma-form" novalidate style="text-align: left;">
@@ -136,48 +91,16 @@
                 <button type="submit" id="submitBtn" class="ap-btn ap-btn-primary" style="width: 100%; margin-top: 30px; padding: 15px; font-size: 18px;">Submit Application</button>
             </form>
         </div>
+"""
 
-    </div><!-- /ap-page-wrap -->
+start_idx = html.find('<div class="ap-form-card hidden" id="form-section">')
+if start_idx == -1:
+    start_idx = html.find('<div class="ap-form-card" id="form-section">')
 
-    <!-- SUCCESS POPUP -->
-    <div class="ap-popup-overlay" id="successPopup">
-        <div class="ap-popup">
-            <div class="ap-popup-icon">🎉</div>
-            <h3>Successfully Submitted!</h3>
-            <p>Your application form and photo have been securely uploaded to our records. You will be contacted by NRTMA team shortly.</p>
-            <button id="closePopupBtn" class="ap-btn ap-btn-primary">Close &amp; Fill Another</button>
-        </div>
-    </div>
+end_idx = html.find('</div><!-- /ap-page-wrap -->')
 
-    <!-- MINIMAL FOOTER -->
-    <footer class="ap-footer">
-        <p>NRTMA Adventure Portal 2026 &nbsp;|&nbsp; Northern Railway, Ministry of Railways, Govt. of India &nbsp;|&nbsp;
-            <a href="admin.html">Admin Portal</a> &nbsp;|&nbsp;
-            <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,333" target="_blank">Privacy Policy</a> &nbsp;|&nbsp;
-            <a href="https://nr.indianrailways.gov.in/view_section.jsp?lang=0&id=0,7,286" target="_blank">Disclaimer</a>
-        </p>
-    </footer>
+if start_idx != -1 and end_idx != -1:
+    html = html[:start_idx] + form_html + "\n    " + html[end_idx:]
 
-    <img id="bg-image" src="form-bg.jpg" alt="form background" style="display:none;">
-    <script src="app_v6.js"></script>
-
-    <script>
-        // Hamburger menu toggle
-        document.getElementById('apHamburger').addEventListener('click', () => {
-            document.querySelector('.ap-nav-links').classList.toggle('open');
-        });
-        // Photo upload preview
-        document.getElementById('photoUpload').addEventListener('change', function () {
-            const file = this.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = e => {
-                const wrap = document.getElementById('uploadIconText');
-                wrap.innerHTML = `<img src="${e.target.result}" alt="Preview" style="max-height:100px; border-radius:8px; margin-bottom:8px;">`;
-                document.querySelector('#uploadBox p').textContent = file.name;
-            };
-            reader.readAsDataURL(file);
-        });
-    </script>
-</body>
-</html>
+with open("apply.html", "w", encoding="utf-8") as f:
+    f.write(html)

@@ -1,4 +1,4 @@
-
+js = """
 document.addEventListener("DOMContentLoaded", () => {
     const btnOption1 = document.getElementById("btnOption1");
     const choiceSection = document.getElementById("choice-section");
@@ -54,14 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             
             const phoneVal = data.contact || "";
-            if(phoneVal && !/^\d{10}$/.test(phoneVal)) {
+            if(phoneVal && !/^\\d{10}$/.test(phoneVal)) {
                 alert("Mobile number must be exactly 10 digits.");
                 document.getElementById("contact").classList.add("ap-invalid");
                 valid = false;
             }
 
             // File inputs
-            const fileInputs = ['photoUpload', 'employeeSignature', 'applicantSignature', 'medicalDocument', 'filledFormDocument'];
+            const fileInputs = ['photoUpload', 'employeeSignature', 'applicantSignature', 'medicalDocument'];
             const files = {};
             
             fileInputs.forEach(id => {
@@ -143,3 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+"""
+
+with open("app_v6.js", "w", encoding="utf-8") as f:
+    f.write(js)
