@@ -1,4 +1,9 @@
 
+const SUPABASE_URL = 'https://dlqsexaiunsploctiwza.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_x5Zm3FXPFNH7tZcq5S3FmA_olJJS5LT';
+const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const btnOption1 = document.getElementById("btnOption1");
     const choiceSection = document.getElementById("choice-section");
