@@ -12,10 +12,10 @@
 
     <!-- NAVBAR -->
     <nav class="ap-navbar">
-        <div class="ap-nav-brand">
+        <a href="index.html" class="ap-nav-brand" style="text-decoration: none; color: inherit;">
             <img src="logo_1.png" alt="NRTMA Logo" class="ap-nav-logo">
             <span>N.R.T.M.A. Portal</span>
-        </div>
+        </a>
         <ul class="ap-nav-links">
             <li><a href="index.html">🏠 Home</a></li>
             <li><a href="index.html#camps">Camps</a></li>
@@ -40,10 +40,13 @@
 
     <div class="ap-page-wrap">
 
-        <div id="choice-section" style="display: flex; justify-content: center; width: 100%; margin-top: 40px;">
-            <button id="btnOption1" class="ap-btn ap-btn-primary" style="flex: 1 1 200px; max-width: 320px; height: 60px; box-sizing: border-box; padding: 0 15px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease;">
-                <span style="font-size: 22px;"></span>
-                <span style="font-size: 1rem; font-weight: 600;">Apply Now</span>
+        <div id="choice-section" class="ap-form-card" style="max-width: 600px; margin: 60px auto; text-align: center; padding: 60px 40px;">
+            <div style="font-size: 48px; margin-bottom: 20px;">??</div>
+            <h2 style="color: var(--navy); margin-bottom: 15px; font-size: 28px;">Ready to Apply?</h2>
+            <p style="color: var(--muted); margin-bottom: 35px; line-height: 1.6; font-size: 16px;">Make sure you have your filled application form PDF (Max 4MB) ready to upload. Once started, please complete the form in one go.</p>
+            <button id="btnOption1" class="ap-btn ap-btn-primary" style="width: 100%; max-width: 320px; height: 60px; font-size: 1.1rem; box-shadow: 0 10px 25px rgba(79, 70, 229, 0.25); display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: transform 0.2s ease;">
+                <span>Start Application</span>
+                <span>&rarr;</span>
             </button>
         </div>
 
