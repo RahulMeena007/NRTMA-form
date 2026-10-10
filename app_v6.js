@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const choiceSection = document.getElementById("choice-section");
     const formSection = document.getElementById("form-section");
     const onlineBackBtn = document.getElementById("onlineBackBtn");
+    const onlineBackBtnBottom = document.getElementById("onlineBackBtnBottom");
     const submitBtn = document.getElementById("submitBtn");
     const successPopup = document.getElementById("successPopup");
     const closePopupBtn = document.getElementById("closePopupBtn");
@@ -16,6 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     if (onlineBackBtn) {
+        onlineBackBtnBottom.addEventListener("click", () => { 
+            formSection.classList.add("hidden"); 
+            choiceSection.classList.remove("hidden"); 
+        });
         onlineBackBtn.addEventListener("click", () => { 
             formSection.classList.add("hidden"); 
             choiceSection.classList.remove("hidden"); 
@@ -61,13 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // File inputs
-            const fileInputs = ['photoUpload', 'employeeSignature', 'applicantSignature', 'medicalDocument', 'filledFormDocument'];
+            const fileInputs = ['filledFormDocument'];
             const files = {};
             
             fileInputs.forEach(id => {
                 const fileEl = document.getElementById(id);
                 if (fileEl && fileEl.files[0]) {
-                    files[id] = fileEl.files[0];
+                    if (fileEl.files[0].size > 4 * 1024 * 1024) {
+                        alert("File size for " + id + " exceeds 4 MB. Please upload a smaller PDF.");
+                        valid = false;
+                    } else {
+                        files[id] = fileEl.files[0];
+                    }
                 } else if (fileEl && fileEl.hasAttribute('data-required')) {
                     alert("Please upload the required file for: " + id);
                     valid = false;
@@ -119,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     employee_name: data.employeeName,
                     contact: phoneVal,
                     email: emailVal,
-                    form_image_url: urls.photoUpload, // Use photo as primary image
+                    form_image_url: urls.filledFormDocument, // Use photo as primary image
                     raw_data: { ...data, urls }
                 }]);
                 

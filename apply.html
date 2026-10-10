@@ -112,28 +112,18 @@
 
                 <!-- UPLOADS SECTION -->
                 <div class="ap-section-group" style="margin-top: 30px; background: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                    <h3 style="margin-bottom: 20px; font-size: 1.1rem; color: var(--navy);">Required Documents (Photos/Scans)</h3>
+                    <h3 style="margin-bottom: 20px; font-size: 1.1rem; color: var(--navy);">Required Documents</h3>
                     <div class="ap-form-grid">
-                        <div class="ap-field">
-                            <label>Passport Size Photo <span class="req">*</span></label>
-                            <input type="file" id="photoUpload" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; background: white;" data-required="true">
-                        </div>
-                        <div class="ap-field">
-                            <label>Signature of Employee <span class="req">*</span></label>
-                            <input type="file" id="employeeSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; background: white;" data-required="true">
-                        </div>
-                        <div class="ap-field">
-                            <label>Signature of Applicant <span class="req">*</span></label>
-                            <input type="file" id="applicantSignature" accept="image/*" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; background: white;" data-required="true">
-                        </div>
-                        <div class="ap-field">
-                            <label>Medical Certificate of Participant <span class="req">*</span></label>
-                            <input type="file" id="medicalDocument" accept="image/*,.pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; background: white;" data-required="true">
+                        <div class="ap-field ap-span-2">
+                            <label>Upload Filled Form (PDF only, Max 4MB) <span class="req">*</span></label>
+                            <input type="file" id="filledFormDocument" accept=".pdf" style="padding: 10px; border: 1px solid var(--border); width: 100%; border-radius: 8px; background: white;" data-required="true">
                         </div>
                     </div>
                 </div>
+                </div>
 
                 <button type="submit" id="submitBtn" class="ap-btn ap-btn-primary" style="width: 100%; margin-top: 30px; padding: 15px; font-size: 18px;">Submit Application</button>
+                <button type="button" id="onlineBackBtnBottom" class="ap-btn" style="width: 100%; margin-top: 15px; background: none; color: var(--muted); border: 2px solid var(--border); padding: 15px; font-size: 18px;">&larr; Go Back</button>
             </form>
         </div>
 
